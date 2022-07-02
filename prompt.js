@@ -5,6 +5,43 @@ const cTable = require('console.table')
 const ascii = require('ascii-art')
 const server = require('./server')
 
+
+const thinkprompt = (data) => {
+  switch (data) {
+      case "View All Employees?":
+        viewAllEmployees();
+      break;
+
+    case "View All Employee's By Roles?":
+        viewAllRoles();
+      break;
+    case "View all Employees By Deparments?":
+        viewAllDepartments();
+      break;
+    
+    case "Add Employee?":
+          addEmployee();
+        break;
+
+    case "Update Employee":
+          updateEmployee();
+        break;
+
+      case "Add Role?":
+          addRole();
+        break;
+
+      case "Add Department?":
+          addDepartment();
+        break;
+
+      }
+console.log(data)
+}
+
+
+
+
 function startPrompt() {
     console.log(`
      
@@ -42,44 +79,12 @@ function startPrompt() {
               "Add Role",
               "View all Departments", 
               "Add Department?"
-            ]
+            ]            
     }
 ])
-thinkprompt(data)
+
 };
 
-  const thinkprompt = (data) => {
-        switch (val.choice) {
-            case "View All Employees?":
-              viewAllEmployees();
-            break;
-    
-          case "View All Employee's By Roles?":
-              viewAllRoles();
-            break;
-          case "View all Employees By Deparments?":
-              viewAllDepartments();
-            break;
-          
-          case "Add Employee?":
-                addEmployee();
-              break;
-
-          case "Update Employee":
-                updateEmployee();
-              break;
-      
-            case "Add Role?":
-                addRole();
-              break;
-      
-            case "Add Department?":
-                addDepartment();
-              break;
-    
-            }
-console.log(data)
-   }
 
    function viewAllEmployees() {
     db.query("SELECT * FROM employee_tracker.employee;", 
@@ -103,4 +108,6 @@ function viewAllEmployees() {
     }
   );
 };
+
+thinkprompt()
 module.exports=startPrompt()
