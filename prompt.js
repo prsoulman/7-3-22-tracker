@@ -1,6 +1,7 @@
 const inquirer = require("inquirer")
 const mysql = require("mysql2")
-const cTable = require("console.table");
+const cTable = require("console.table")
+const ascii = require("ascii-art")
 
 function startPrompt() {
     console.log(`
@@ -8,9 +9,9 @@ function startPrompt() {
     
      ______________________________________________________   
     |                                                      | 
-    |      ______                   _                      | 
+    |      ______                 _                        | 
     |     |  ____|_   ___   _ __ | | __  _   _  __  __     | 
-    |     |   _| | '_'  _ \| _  \| |/ _\| | | |/__\/__\    | 
+    |     |   _| | '_'  _ \| _  \| |/ _\| | | |/__\/__\    |
     |     |  |___| | | | | | _)  | | |_|| |_| |   / __/    | 
     |     |______|_| |_| |_| ,__/|_|\__/ \__, |\__|\__|    | 
     |                      |_|            |__/             | 
@@ -45,34 +46,36 @@ function startPrompt() {
 };
 
 startPrompt()
-// ]).then(function(val) {
-//         switch (val.choice) {
-//             case "View All Employees?":
-//               viewAllEmployees();
-//             break;
+.then(function(val) {
+        switch (val.choice) {
+            case "View All Employees?":
+              viewAllEmployees();
+            break;
     
-//           case "View All Employee's By Roles?":
-//               viewAllRoles();
-//             break;
-//           case "View all Emplyees By Deparments":
-//               viewAllDepartments();
-//             break;
+          case "View All Employee's By Roles?":
+              viewAllRoles();
+            break;
+          case "View all Emplyees By Deparments":
+              viewAllDepartments();
+            break;
           
-//           case "Add Employee?":
-//                 addEmployee();
-//               break;
+          case "Add Employee?":
+                addEmployee();
+              break;
 
-//           case "Update Employee":
-//                 updateEmployee();
-//               break;
+          case "Update Employee":
+                updateEmployee();
+              break;
       
-//             case "Add Role?":
-//                 addRole();
-//               break;
+            case "Add Role?":
+                addRole();
+              break;
       
-//             case "Add Department?":
-//                 addDepartment();
-//               break;
+            case "Add Department?":
+                addDepartment();
+              break;
     
-//             }
-//    })
+            }
+   })
+
+module.exports=startPrompt()
