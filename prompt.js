@@ -1,7 +1,9 @@
-const inquirer = require("inquirer")
-const mysql = require("mysql2")
-const cTable = require("console.table")
-const ascii = require("ascii-art")
+
+const inquirer = require('inquirer')
+const mysql = require('mysql2')
+const cTable = require('console.table')
+const ascii = require('ascii-art')
+const server = require('./server')
 
 function startPrompt() {
     console.log(`
@@ -30,8 +32,8 @@ function startPrompt() {
     inquirer.prompt([
     {
     type: "list",
-    message: "What would you like to do?",
     name: "choice",
+    message: "What would you like to do?",
     choices: [
               "View All Employees?", 
               "Add Employee?",
@@ -43,10 +45,10 @@ function startPrompt() {
             ]
     }
 ])
+thinkprompt(data)
 };
 
-startPrompt()
-.then(function(val) {
+  const thinkprompt = (data) => {
         switch (val.choice) {
             case "View All Employees?":
               viewAllEmployees();
@@ -55,7 +57,7 @@ startPrompt()
           case "View All Employee's By Roles?":
               viewAllRoles();
             break;
-          case "View all Emplyees By Deparments":
+          case "View all Employees By Deparments?":
               viewAllDepartments();
             break;
           
@@ -76,6 +78,29 @@ startPrompt()
               break;
     
             }
-   })
+console.log(data)
+   }
 
+   function viewAllEmployees() {
+    db.query("SELECT * FROM employee_tracker.employee;", 
+    function(err, res) {
+      if (err) throw err
+      console.table(res)
+      startPrompt()
+  })
+  }
+  function viewAllEmployees() {
+  db.query("SELECT * FROM employee_tracker.employee;", function (err, results) {
+    console.log(results);
+  });
+};
+function viewAllEmployees() {
+  db.query(
+    'SELECT * FROM employee_tracker.employee;',
+    function(err, results, fields) {
+      console.log(results); // results contains rows returned by server
+      console.log(fields); // fields contains extra meta data about results, if available
+    }
+  );
+};
 module.exports=startPrompt()
