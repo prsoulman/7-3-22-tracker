@@ -36,43 +36,56 @@ app.listen(PORT, () => {
 
 //Testing all the querys
 
-//View all Employees
-db.query("SELECT * FROM employee_tracker.employee;", function (err, results) {
-  console.log(results);
-});
+// //View all Employees
+// db.query("SELECT * FROM employee_tracker.employee;", function (err, results) {
+//   console.log(results);
+// });
 
-//View all Roles
-db.query("SELECT * FROM employee_tracker.role;", function (err, results) {
-  console.log(results);
-});
+// //View all Roles
+// db.query("SELECT * FROM employee_tracker.role;", function (err, results) {
+//   console.log(results);
+// });
 
-//View all Departments
-db.query("SELECT * FROM employee_tracker.department;", function (err, results) {
-  console.log(results);
-});
-
-
+// //View all Departments
+// db.query("SELECT * FROM employee_tracker.department;", function (err, results) {
+//   console.log(results);
+// });
 
 
 
-//Add Employee Written test sql 
-db.query("SELECT * FROM employee_tracker.employee;", function (err, results) {
-  console.log(results);
-  console.table(results);
-});
-//Update Employee (add)
-db.query("SELECT * FROM employee_tracker.employee;", function (err, results) {
-  console.log(results);
-  console.table(results);
-});
-//Add Role test INSERT function
-db.query("SELECT * FROM employee_tracker.employee;", function (err, results) {
-  console.log(results);
-  console.table(results);
-});
-//Add Department test INSERT function
-db.query("SELECT * FROM employee_tracker.employee;", function (err, results) {
-  console.log(results);
-  console.table(results);
-});
 
+
+// //Add Employee Written test sql 
+// db.query("SELECT * FROM employee_tracker.employee;", function (err, results) {
+//   console.log(results);
+//   console.table(results);
+// });
+// //Update Employee (add)
+// db.query("SELECT * FROM employee_tracker.employee;", function (err, results) {
+//   console.log(results);
+//   console.table(results);
+// });
+// //Add Role test INSERT function
+// db.query("SELECT * FROM employee_tracker.employee;", function (err, results) {
+//   console.log(results);
+//   console.table(results);
+// });
+// //Add Department test INSERT function
+// db.query("SELECT * FROM employee_tracker.employee;", function (err, results) {
+//   console.log(results);
+//   console.table(results);
+// });
+
+// Console.table tests
+
+// call once somewhere in the beginning of the app
+// const cTable = require('console.table');
+// console.table([
+//   {
+//     name: 'foo',
+//     age: 10
+//   }, {
+//     name: 'bar',
+//     age: 20
+//   }
+// ]);
