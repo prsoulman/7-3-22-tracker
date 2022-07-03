@@ -131,6 +131,44 @@ const viewAllDepartments = () => {
   });
 };
 
+const addRole = () => {
+  console.log("add role");
+  //*Add Role
+	inquirer
+		.prompt([
+			{
+				name: 'newRole',
+				type: 'input',
+				message: 'What Is The Title Of The New Role You Want To Add?',
+			},
+			{
+				name: 'newRoleSalary',
+				type: 'number',
+				message: 'What Is The Salary Of This New Role?',
+			},
+		])
+		.then(function (answer) {
+			//*Need to add role name and then find length of role array to add ID #
+			let newRoleName = answer.newRole;
+			let newRoleSalary = answer.newRoleSalary;
+			let newRoleID = roleArray.length + 1;
+
+			//* Take information and build new role constructor
+			console.log(`
+			-------------------------------------------------------------------------------------------------
+			Adding New Role | Role Title: ${newRoleName} | Role Salary ${newRoleSalary} | Role ID ${newRoleID} to Database!
+			-------------------------------------------------------------------------------------------------
+			`);
+			let addNewRole = new role(newRoleName, newRoleSalary, newRoleID);
+			connection.query('INSERT INTO role SET ?', addNewRole, function (err, res) {
+				if (err) throw err;
+			});
+			startPrompt();
+		});
+  
+}
+
+
 
 startPrompt()
 
