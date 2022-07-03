@@ -34,5 +34,9 @@ app.listen(PORT, () => {
   console.log(`Server running on port ${PORT}`);
 });
 
+//Testing all the querys
 
+db.query("SELECT * FROM employee_tracker.employee;", function (err, results) {
+  console.log(results);
+});
 
