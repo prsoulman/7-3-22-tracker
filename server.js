@@ -137,42 +137,11 @@ const viewAllDepartments = () => {
 //========add Functions==============
 
 //Add Employee Functions
-const addEmployee = () => {
-  console.log("add employees");
 
-//TODO refactor this code to a menu that asks the User for corresponding data
+//Add Role Function
 
-    inquirer.prompt([
-      {
-        type: 'input',
-        name: 'role',
-        message: 'What is the role ID?',
-    },
-    {
-        type: 'input',
-        name: 'first',
-        message: 'What is the employees first name?',
-    },
-    {
-        type: 'input',
-        name: 'last',
-        message: 'What is the employees last name?',
-    },
-    {
-        type: 'input',
-        name: 'manager',
-        message: 'What is the manager?',
-    },
 
-]) .then(({first, last, manager, role}) => {
-    //const employee = new Employee(first, last, manager, role)
-    db.query(`USE employee_tracker INSERT INTO employee_tracker.employee (ID, first_name, last_name, manager_id, role_id) VALUES (${role}, ${first}, ${last}, ${manager}, ${role})`), function (err, results) {
-      console.table(results);
-      viewAllEmployees()
-    startPrompt()
-    }
-}) 
-};
+
 
 
 
