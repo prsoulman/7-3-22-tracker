@@ -88,21 +88,6 @@ const viewAllEmployees = () => {
     console.table(res);
     //startPrompt();
   });
-
-  // Connection.execute("SELECT * FROM employee_tracker.employee;", function (err, res) {
-  //   if (err) throw err;
-  //   console.table(res);
-  // }
-  //console.table Example all Employees
-// console.table([
-//   {
-//     name: 'foo',
-//     age: 10
-//   }, {
-//     name: 'bar',
-//     age: 20
-//   }
-// ]);
 };
 
 // const viewAllRoles = () => {
