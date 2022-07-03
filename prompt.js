@@ -108,7 +108,7 @@ const addEmployee = () => {
     const employee = new Employee(first, last, manager, role)
 
 
-    db.query(`"UPDATE employee_tracker.employee (first_name, last_name, manager_id, role_id) VALUES (${first}, ${last}, ${manager}, ${role};"`), function (err, results) {
+    db.query(`"INSERT INTO employee_tracker (first_name, last_name, manager_id, role_id) VALUES (${first}, ${last}, ${manager}, ${role})"`), function (err, results) {
       console.table(results);
     mainMenu()
     }
