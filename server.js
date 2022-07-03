@@ -8,6 +8,10 @@ const express = require('express')
 const PORT = process.env.PORT || 3001;
 const app = express();
 
+//Arrays
+const roleArray = []
+
+
 // Express middleware
 app.use(express.urlencoded({ extended: false }));
 app.use(express.json());
@@ -159,7 +163,7 @@ const addRole = () => {
 			Adding New Role | Role Title: ${newRoleName} | Role Salary ${newRoleSalary} | Role ID ${newRoleID} to Database!
 			-------------------------------------------------------------------------------------------------
 			`);
-			let addNewRole = new role(newRoleName, newRoleSalary, newRoleID);
+			let addNewRole = new Role(newRoleName, newRoleSalary, newRoleID);
 			connection.query('INSERT INTO role SET ?', addNewRole, function (err, res) {
 				if (err) throw err;
 			});
@@ -167,6 +171,35 @@ const addRole = () => {
 		});
   
 }
+
+
+
+
+
+
+
+
+function RoleWithID() {
+	const query = `
+    SELECT id, title 
+    FROM role;`;
+
+	connection.query(query, function (err, res) {
+		if (err) throw err;
+		for (let i = 0; i < res.length; i++) {
+			roleAndIDArray.push(res[i]);
+		}
+	});
+}
+
+
+
+
+
+
+
+
+
 
 
 
