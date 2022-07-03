@@ -78,12 +78,14 @@ const startPrompt = () => {
     });
 };
 
+
+
 const viewAllEmployees = () => {
   console.log("employees");
   const queryEmployees = `
   SELECT * FROM employee_tracker.employee;
   `
-  db.query(queryEmployees, function (err, results) {
+  db.query(queryEmployees, function (err, res) {
     console.table(res);
     startPrompt();
   });
@@ -192,8 +194,16 @@ const addRole = () => {
 }
 
 const viewAllDepartments = () => {
-  console.log("view department");
+  console.log("view department")  
+  const queryDepartments = `
+  SELECT * FROM employee_tracker.departments;
+  `
+  db.query(queryDepartments, function (err, res) {
+    console.table(res);
+    startPrompt();
+  });
 };
+
 
 const addDepartment = () => {
   console.log("add department");
@@ -222,7 +232,6 @@ const updateEmployeeRole = () => {
 // 
 
 
-};
 
 
 
@@ -235,4 +244,5 @@ const updateEmployeeRole = () => {
 
 
 
-module.exports = startPrompt();
+
+//module.exports = startPrompt()
