@@ -28,26 +28,25 @@ const startPrompt = () => {
 
 
   //   `)
-  inquirer
-    .prompt({
-      type: "list",
-      name: "choice",
-      message: "What would you like to do?",
+  inquirer.prompt({
+      type: 'list',
+      name: 'choice',
+      message: 'What would you like to do?',
       choices: [
-        "View All Employees?",
-        "Add Employee?",
-        "Update Employee",
-        "View All Roles",
-        "Add Role",
-        "View all Departments",
-        "Add Department?",
+        'View All Employees?',
+        'Add Employee?',
+        'Update Employee',
+        'View All Roles',
+        'Add Role',
+        'View all Departments',
+        'Add Department?'
       ],
     })
     // the function is called startPrompt()
-    .then(({choice}) => {
-      console.log(choice);
-      if (choice === 'View All Employees') {
-        viewAllEmployees();
+    .then (({choice}) => {
+      console.log({choice})
+      if (choice === 'View All Employees?') {
+        viewAllEmployees()
       } else if (choice === 'Add Employee?') {
         viewAllRoles();
       } else if (choice === 'Update Employee') {
@@ -66,29 +65,11 @@ const startPrompt = () => {
     });
 }
 
-function viewAllEmployees() {
+const viewAllEmployees = () => {
   console.log('employees')
-  db.query("SELECT * FROM employee_tracker.employee;", function (err, res) {
-    if (err) throw err;
-    console.table(res);
-    startPrompt();
-  });
-}
-// function viewAllEmployees() {
-//   db.query("SELECT * FROM employee_tracker.employee;", function (err, results) {
-//     console.log(results);
-//   });
-// }
-// function viewAllEmployees() {
-//   db.query(
-//     "SELECT * FROM employee_tracker.employee;",
-//     function (err, results, fields) {
-//       console.log(results); // results contains rows returned by server
-//       console.log(fields); // fields contains extra meta data about results, if available
-//     }
-//   );
-// }
-
-startPrompt();
+  // db.query("SELECT * FROM employee_tracker.employee;", function (err, res) {
+  //   if (err) throw err;
+    //console.table(res);
+  }
 
 module.exports = startPrompt();
