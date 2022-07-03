@@ -80,9 +80,14 @@ const startPrompt = () => {
 
 const viewAllEmployees = () => {
   console.log("employees");
-  db.query("SELECT * FROM employee_tracker.employee;", function (err, results) {
-    console.log(results);
+  const queryEmployees = `
+  SELECT * FROM employee_tracker.employee;
+  `
+  db.query(queryEmployees, function (err, results) {
+    console.table(res);
+    startPrompt();
   });
+
   // Connection.execute("SELECT * FROM employee_tracker.employee;", function (err, res) {
   //   if (err) throw err;
   //   console.table(res);
@@ -97,16 +102,22 @@ const viewAllEmployees = () => {
 //     age: 20
 //   }
 // ]);
-
-
-
-
-
 };
 
 const viewAllRoles = () => {
-  console.log("roles");
-};
+  console.log("roles")
+  const queryRoles = `
+  SELECT * FROM role
+  `;
+
+connection.query(queryRoles, function (err, res) {
+  if (err) throw err;
+  console.table(res);
+
+  startPrompt();
+});
+}
+
 
 const addEmployee = () => {
   console.log("add employees");
@@ -145,7 +156,40 @@ const addEmployee = () => {
 
 const addRole = () => {
   console.log("add role");
-};
+  //*Add Role
+	inquirer
+		.prompt([
+			{
+				name: 'newRole',
+				type: 'input',
+				message: 'What Is The Title Of The New Role You Want To Add?',
+			},
+			{
+				name: 'newRoleSalary',
+				type: 'number',
+				message: 'What Is The Salary Of This New Role?',
+			},
+		])
+		.then(function (answer) {
+			//*Need to add role name and then find length of role array to add ID #
+			let newRoleName = answer.newRole;
+			let newRoleSalary = answer.newRoleSalary;
+			let newRoleID = roleArray.length + 1;
+
+			//* Take information and build new role constructor
+			console.log(`
+			-------------------------------------------------------------------------------------------------
+			Adding New Role | Role Title: ${newRoleName} | Role Salary ${newRoleSalary} | Role ID ${newRoleID} to Database!
+			-------------------------------------------------------------------------------------------------
+			`);
+			let addNewRole = new role(newRoleName, newRoleSalary, newRoleID);
+			connection.query('INSERT INTO role SET ?', addNewRole, function (err, res) {
+				if (err) throw err;
+			});
+			startPrompt();
+		});
+  
+}
 
 const viewAllDepartments = () => {
   console.log("view department");
