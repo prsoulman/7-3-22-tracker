@@ -36,6 +36,36 @@ app.listen(PORT, () => {
 
 //Testing all the querys
 
+//View all Employees
+db.query("SELECT * FROM employee_tracker.employee;", function (err, results) {
+  console.log(results);
+});
+
+//View all Roles
+db.query("SELECT * FROM employee_tracker.role;", function (err, results) {
+  console.log(results);
+});
+
+//View all Departments
+db.query("SELECT * FROM employee_tracker.department;", function (err, results) {
+  console.log(results);
+});
+
+
+
+//Add Employee
+db.query("SELECT * FROM employee_tracker.employee;", function (err, results) {
+  console.log(results);
+});
+//Update Employee (add)
+db.query("SELECT * FROM employee_tracker.employee;", function (err, results) {
+  console.log(results);
+});
+//Add Role
+db.query("SELECT * FROM employee_tracker.employee;", function (err, results) {
+  console.log(results);
+});
+//Add Department
 db.query("SELECT * FROM employee_tracker.employee;", function (err, results) {
   console.log(results);
 });
