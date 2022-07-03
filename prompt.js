@@ -78,8 +78,21 @@ const startPrompt = () => {
 };
 
 
-
+//function to view all the employees 
 const viewAllEmployees = () => {
+  console.log("employees");
+  const queryEmployees = `
+  SELECT * FROM employee_tracker.employee;
+  `
+  db.query(queryEmployees, function (err, res) {
+    console.table(res);
+    //startPrompt();
+  });
+};
+
+
+//function to view all the Roles
+const viewAllRoles = () => {
   console.log("employees");
   const queryEmployees = `
   SELECT * FROM employee_tracker.employee;

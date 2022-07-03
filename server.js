@@ -109,8 +109,27 @@ const viewAllEmployees = () => {
   });
 };
 
+const viewAllRoles = () => {
+  console.log("Roles");
+  const queryEmployees = `
+  SELECT * FROM employee_tracker.role;
+  `
+  db.query(queryEmployees, function (err, res) {
+    console.table(res);
+    //startPrompt();
+  });
+};
 
-
+// const viewAllDepartments = () => {
+//   console.log("Departments");
+//   const queryEmployees = `
+//   SELECT * FROM employee_tracker.role;
+//   `
+//   db.query(queryEmployees, function (err, res) {
+//     console.table(res);
+//     //startPrompt();
+//   });
+// };
 
 
 startPrompt()
