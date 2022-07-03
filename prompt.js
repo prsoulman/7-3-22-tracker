@@ -3,6 +3,21 @@ const mysql = require("mysql2");
 const cTable = require("console.table");
 const ascii = require("ascii-art");
 const server = require("./server");
+const cTable = require("console.tabl")
+
+//console.table Example
+// console.table([
+//   {
+//     name: 'foo',
+//     age: 10
+//   }, {
+//     name: 'bar',
+//     age: 20
+//   }
+// ]);
+
+
+
 
 const startPrompt = () => {
   // console.log(`
@@ -72,6 +87,21 @@ const viewAllEmployees = () => {
   //   if (err) throw err;
   //   console.table(res);
   // }
+  //console.table Example all Employees
+// console.table([
+//   {
+//     name: 'foo',
+//     age: 10
+//   }, {
+//     name: 'bar',
+//     age: 20
+//   }
+// ]);
+
+
+
+
+
 };
 
 const viewAllRoles = () => {
