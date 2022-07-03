@@ -48,7 +48,7 @@ const startPrompt = () => {
       } else if (choice === "Add Employee?") {
         addEmployee();
       } else if (choice === "Update Employee") {
-        updateEmployee();
+        updateEmployeeRole();
       } else if (choice === "View All Roles") {
         viewAllRoles();
       } else if (choice === "Add Role") {
@@ -83,7 +83,7 @@ const addEmployee = () => {
 
 //TODO refactor this code to a menu that asks the User for corresponding data
 
-    inquirer.prompt([{
+    inquirer.prompt([
     {
         type: 'input',
         name: 'first',
@@ -104,10 +104,8 @@ const addEmployee = () => {
         name: 'role',
         message: 'What is the role ID?',
     },
-]) .then(({id, first, last, manager, role}) => {
+]) .then(({first, last, manager, role}) => {
     const employee = new Employee(first, last, manager, role)
-
-
     db.query(`"INSERT INTO employee_tracker (first_name, last_name, manager_id, role_id) VALUES (${first}, ${last}, ${manager}, ${role})"`), function (err, results) {
       console.table(results);
     mainMenu()
@@ -126,7 +124,7 @@ const viewAllDepartments = () => {
 const addDepartment = () => {
   console.log("add department");
 };
-const updateEmployee = () => {
+const updateEmployeeRole = () => {
   console.log("update employee");
 
   //need two prompts one to find the employee select than find what they would like to update.

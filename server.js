@@ -58,17 +58,21 @@ db.query("SELECT * FROM employee_tracker.department;", function (err, results) {
 //Add Employee Written test sql 
 db.query("SELECT * FROM employee_tracker.employee;", function (err, results) {
   console.log(results);
+  console.table(results);
 });
 //Update Employee (add)
 db.query("SELECT * FROM employee_tracker.employee;", function (err, results) {
   console.log(results);
+  console.table(results);
 });
 //Add Role test INSERT function
 db.query("SELECT * FROM employee_tracker.employee;", function (err, results) {
   console.log(results);
+  console.table(results);
 });
 //Add Department test INSERT function
 db.query("SELECT * FROM employee_tracker.employee;", function (err, results) {
   console.log(results);
+  console.table(results);
 });
 
