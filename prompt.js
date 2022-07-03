@@ -84,10 +84,6 @@ const addEmployee = () => {
 //TODO refactor this code to a menu that asks the User for corresponding data
 
     inquirer.prompt([{
-        type: 'input',
-        name: 'id',
-        message: 'What is the employees ID?',
-    }, 
     {
         type: 'input',
         name: 'first',
@@ -109,22 +105,14 @@ const addEmployee = () => {
         message: 'What is the role ID?',
     },
 ]) .then(({id, first, last, manager, role}) => {
-    const employee = new Employee(id, first, last, manager, role)
-
-    db.query("UPDATE employee_tracker.employee (id,
-       first_name, last_name, manager_id, role_id) VALUES (${id}, first, last, manager, role);", function (err, results) {
-      console.log(results);
+    const employee = new Employee(first, last, manager, role)
 
 
-     
-
+    db.query(`"UPDATE employee_tracker.employee (first_name, last_name, manager_id, role_id) VALUES (${first}, ${last}, ${manager}, ${role};"`), function (err, results) {
+      console.table(results);
     mainMenu()
-})
-
-} 
-
-
-
+    }
+}) 
 };
 
 const addRole = () => {
@@ -140,22 +128,26 @@ const addDepartment = () => {
 };
 const updateEmployee = () => {
   console.log("update employee");
-  inquirer
-  .prompt({
-    type: "list",
-    name: "choice",
-    message: "What would you like Update?",
-    choices: [
-      "View All Employees?",
-      "Add Employee?",
-      "Update Employee",
-      "View All Roles",
-      "Add Role",
-      "View all Departments",
-      "Add Department?",
-    ],
-  })
 
+  //need two prompts one to find the employee select than find what they would like to update.
+  // inquirer
+  // .prompt({
+  //   type: "list",
+  //   name: "choice",
+  //   message: "What would you like Update?",
+  //   choices: [
+  //     "View All Employees?",
+  //     "Add Employee?",
+  //     "Update Employee",
+  //     "View All Roles",
+  //     "Add Role",
+  //     "View all Departments",
+  //     "Add Department?",
+  //   ],
+  // })
+
+  // `"UPDATE employee_tracker.employee (first_name, last_name, manager_id, role_id) VALUES (${first}, ${last}, ${manager}, ${role};"
+// 
 
 
 };
