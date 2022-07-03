@@ -72,4 +72,28 @@ const viewAllEmployees = () => {
     //console.table(res);
   }
 
+  const viewAllRoles = () => {
+    console.log('roles')
+  }
+
+  const addEmployee = () => {
+    console.log('add employees')
+  }
+
+  const addRole = () => {
+    console.log('add role')
+  }
+
+  const viewAllDepartments = () => {
+    console.log('view department')
+  }
+
+  const addDepartment = () => {
+    console.log('add department')
+  }
+
+
+
+
+
 module.exports = startPrompt();
