@@ -135,9 +135,12 @@ const viewAllDepartments = () => {
   });
 };
 
-const addRole = () => {
+const addRole = async() => {
   console.log("add role");
   //*Add Role
+  const [departments] = await db.promise().query("SELECT * FROM department");
+  const departmentArray = departments.map(({id, name}) => ({name:name, value:id}))
+  console.log(departments)
 	inquirer
 		.prompt([
 			{
@@ -150,24 +153,31 @@ const addRole = () => {
 				type: 'number',
 				message: 'What Is The Salary Of This New Role?',
 			},
+      {
+				name: 'newRoleDepartment',
+				type: 'list',
+				message: 'What is the department for the new role?',
+        choices: departmentArray
+			},
 		])
 		.then(function (answer) {
 			//*Need to add role name and then find length of role array to add ID #
 			let newRoleName = answer.newRole;
 			let newRoleSalary = answer.newRoleSalary;
-			let newRoleID = roleArray.length + 1;
+			let newDepartmentId = answer.newRoleDepartment;
 
 			//* Take information and build new role constructor
-			console.log(`
-			-------------------------------------------------------------------------------------------------
-			Adding New Role | Role Title: ${newRoleName} | Role Salary ${newRoleSalary} | Role ID ${newRoleID} to Database!
-			-------------------------------------------------------------------------------------------------
-			`);
-			let addNewRole = new Role(newRoleName, newRoleSalary, newRoleID);
-			connection.query('INSERT INTO role SET ?', addNewRole, function (err, res) {
-				if (err) throw err;
-			});
-			startPrompt();
+			// console.log(`
+			// -------------------------------------------------------------------------------------------------
+			// Adding New Role | Role Title: ${newRoleName} | Role Salary ${newRoleSalary} | Role ID ${newRoleID} to Database!
+			// -------------------------------------------------------------------------------------------------
+			// `);
+			let addNewRole = {title:newRoleName, salary:newRoleSalary, department_id:newDepartmentId};
+			db.promise().query('INSERT INTO role SET ?', addNewRole).then(res => {
+        viewAllRoles()
+      })
+			// startPrompt();
+      console.log(answer)
 		});
   
 }
@@ -194,7 +204,19 @@ function RoleWithID() {
 
 
 
-
+function addDepartment() {
+  inquirer.prompt( {
+    type: "input",
+    name: "department",
+    message: "What is the name of the new department?"
+  }).then(answer => {
+    let department = {name:answer.department};
+    db.promise().query(`INSERT INTO department SET ?`, department)
+    .then(res => {
+    viewAllDepartments()
+    })
+  })
+}
 
 
 
