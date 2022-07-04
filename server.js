@@ -101,6 +101,8 @@ const startPrompt = () => {
 };
 
 
+//==========view functions===============//
+
 
 const viewAllEmployees = () => {
   console.log("employees");
@@ -113,6 +115,7 @@ const viewAllEmployees = () => {
   });
 };
 
+
 const viewAllRoles = () => {
   console.log("Roles");
   const queryEmployees = `
@@ -124,6 +127,7 @@ const viewAllRoles = () => {
   });
 };
 
+
 const viewAllDepartments = () => {
   console.log("Departments");
   const queryEmployees = `
@@ -134,6 +138,12 @@ const viewAllDepartments = () => {
     startPrompt();
   });
 };
+
+
+
+//==========add functions================//
+
+
 
 const addRole = async() => {
   console.log("add role");
@@ -183,27 +193,6 @@ const addRole = async() => {
 }
 
 
-
-
-
-
-
-
-function RoleWithID() {
-	const query = `
-    SELECT id, title 
-    FROM role;`;
-
-	connection.query(query, function (err, res) {
-		if (err) throw err;
-		for (let i = 0; i < res.length; i++) {
-			roleAndIDArray.push(res[i]);
-		}
-	});
-}
-
-
-
 function addDepartment() {
   inquirer.prompt( {
     type: "input",
@@ -217,12 +206,6 @@ function addDepartment() {
     })
   })
 }
-
-
-
-
-
-
 
 
 startPrompt()
