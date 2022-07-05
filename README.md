@@ -1,7 +1,7 @@
 # 7-3-22-tracker
 
 **Description**
-by using this CLI the User will be able to add departments, roles and employees into the employee_tracker database. The user can also view information in table format.
+by using this CLI the User will be able to add departments, roles and employees into the employee_tracker database. The user can also view information in table format to add and update employees.
 
 **Installations**
 Node.js
@@ -11,7 +11,7 @@ Mysql
 NPM
 Express.js
 
-![GIFofwalkthrough](.\Screenshot%2022-07-05%101737.png)
+![GIFofwalkthrough](./Screenshot%202022-07-05%20101737.png)
 
 **LInks**
 
