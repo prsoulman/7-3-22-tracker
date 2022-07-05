@@ -11,7 +11,7 @@ Mysql
 NPM
 Express.js
 
-![GIF of walkthrough](pathofGIF)
+![GIF of walkthrough](.\Screenshot%2022-07-05%101737.png)
 
 **LInks**
 
